@@ -1,9 +1,9 @@
 package org.example.View;
 
 import org.example.DAO.CustomerDaoList;
-import org.example.Model.Customer;
-import org.example.Model.Vehicle;
-import org.example.Model.VehicleSort;
+import org.example.DAO.ParkingSpotDaoList;
+import org.example.DAO.ReservationDaoList;
+import org.example.Model.*;
 
 public class UIController {
 
@@ -26,13 +26,7 @@ public class UIController {
 
                 break;
             case "3":
-                Customer customerToSave = CustomerDaoList.getInstance().findById(ui.catchUserInput("Enter the customerNo: ", "Your choice cant't be empty"));
-                if (customerToSave != null){//todo: search for the costumer first. We're just looking if the string is not empty.
-
-                    System.out.println(CustomerDaoList.getInstance().registerCustomer(customerToSave).toString());
-                } else {
-                    System.out.println("The customer couldn't be found");
-                }
+                handleParkVehicleChoice();
                 break;
             case "4":
                 break;
@@ -48,12 +42,28 @@ public class UIController {
     public void handleRegisterCustomerChoice(){
         String name = ui.catchUserInput("Enter the customer's name: ", "The name can't be empty");
         String phone = ui.catchUserInput("Enter the customer's phone: ", "The phone can't be empty");
-        String car = ui.catchUserInput("Enter the plate number of the vehicle: ", "The plate number can't be empty");
+        String plateNo = ui.catchUserInput("Enter the plate number of the vehicle: ", "The plate number can't be empty");
         VehicleSort vehicleSort = ui.catchUserInputWithEnum("Chose the vehicle sort: ");
-        Vehicle vehicle = new Vehicle("MDK282", vehicleSort);
+        Vehicle vehicle = new Vehicle(plateNo, vehicleSort);
         Customer customer = new Customer(name, phone, vehicle);
         System.out.println("The customer has successfully been registered");
         System.out.println(CustomerDaoList.getInstance().registerCustomer(customer));
     }
+
+    public void handleParkVehicleChoice(){
+        String id = ui.catchUserInput("Enter the customer id: ", "You must enter a valid id. ");
+        Customer customer = CustomerDaoList.getInstance().findById(id);
+        if (customer != null) {
+            ParkingSpot parkingSpot = ParkingSpotDaoList.getInstance().searchFirstAvailableParkingSpotFromASort(customer.getVehicle().getVehicleSort());
+            if (parkingSpot != null){
+                Reservation reservation = new Reservation(customer, parkingSpot);
+                System.out.println("The reservation has bee made.");
+                System.out.println(reservation.toString());
+            }
+        } else {
+            System.out.println("We couldn't found a customer with that customer id.");
+        }
+    }
+
 
 }

@@ -8,12 +8,10 @@ public class ParkingSpot {
     String id;
     boolean occupied;
     VehicleSort parkingSort;
-    String reservationId;
 
     //constructor
-    public ParkingSpot(VehicleSort parkingSort, String reservationId, Boolean occupied) {
+    public ParkingSpot(VehicleSort parkingSort, Boolean occupied) {
         this.parkingSort = parkingSort;
-        this.reservationId = reservationId;
         this.id = ParkingSpotSequencer.nextId();
         this.occupied = occupied;
     }
@@ -27,11 +25,4 @@ public class ParkingSpot {
         this.parkingSort = parkingSort;
     }
 
-    public String getReservationId() {
-        return reservationId;
-    }
-
-    public void setReservationId(String reservationId) {
-        this.reservationId = reservationId;
-    }
 }

@@ -15,11 +15,11 @@ public class Reservation {
     Boolean active;
     //constructor
 
-    public Reservation(Customer customer) {
+    public Reservation(Customer customer, ParkingSpot parkingSpot) {
         this.customer = customer;
         this.id = ReservationSequencer.nextId();
-        //todo : Create a method that search between all free parking spots of the sort the vehicle is.
-        //this.parkingSpot = checkForAvailable()
+        this.parkingSpot = parkingSpot;
+        this.startingTime = LocalDateTime.now();
         this.active = true;
     }
 
@@ -59,5 +59,11 @@ public class Reservation {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    @Override
+    public String toString(){
+        return "Reservation number: " + id + "\n Customer name: " + customer.getName() + " Vehicle type: " + customer.vehicle.vehicleSort +
+                " Plate number: " + customer.vehicle.plateNumber + " Start parking at: " + startingTime;
     }
 }
