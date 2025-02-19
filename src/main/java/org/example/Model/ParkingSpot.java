@@ -25,4 +25,16 @@ public class ParkingSpot {
         this.parkingSort = parkingSort;
     }
 
+    public boolean isOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(boolean occupied) {
+        this.occupied = occupied;
+    }
+
+    @Override
+    public String toString(){
+        return "Parking spot No: " + id + " Occupied: " + occupied + " Parking spot for: " + parkingSort;
+    }
 }

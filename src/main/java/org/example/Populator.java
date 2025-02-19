@@ -41,7 +41,7 @@ public class Populator {
         CustomerDaoList.getInstance().registerCustomer(c9);
         CustomerDaoList.getInstance().registerCustomer(c10);
 
-        ParkingSpot ps1 = new ParkingSpot(VehicleSort.CAR, false); 
+        ParkingSpot ps1 = new ParkingSpot(VehicleSort.CAR, false);
         ParkingSpot ps2 = new ParkingSpot(VehicleSort.CAR, false); 
         ParkingSpot ps3 = new ParkingSpot(VehicleSort.CAR, false); 
         ParkingSpot ps4 = new ParkingSpot(VehicleSort.CAR, false); 
@@ -103,17 +103,26 @@ public class Populator {
         ParkingSpotDaoList.getInstance().saveParkingSpot(ps29);
         ParkingSpotDaoList.getInstance().saveParkingSpot(ps30);
 
-        Reservation res1 = new Reservation(c1, ps1); 
-        Reservation res2 = new Reservation(c2, ps2); 
-        Reservation res3 = new Reservation(c3, ps3); 
-        Reservation res4 = new Reservation(c4, ps4); 
-        Reservation res5 = new Reservation(c5, ps13); 
-        Reservation res6 = new Reservation(c6, ps14); 
-        Reservation res7 = new Reservation(c7, ps18); 
-        Reservation res8 = new Reservation(c8, ps19); 
-        Reservation res9 = new Reservation(c9, ps24); 
+        Reservation res1 = new Reservation(c1, ps1);
+        ps1.setOccupied(true);
+        Reservation res2 = new Reservation(c2, ps2);
+        ps2.setOccupied(true);
+        Reservation res3 = new Reservation(c3, ps3);
+        ps3.setOccupied(true);
+        Reservation res4 = new Reservation(c4, ps4);
+        ps4.setOccupied(true);
+        Reservation res5 = new Reservation(c5, ps13);
+        ps13.setOccupied(true);
+        Reservation res6 = new Reservation(c6, ps14);
+        ps14.setOccupied(true);
+        Reservation res7 = new Reservation(c7, ps18);
+        ps18.setOccupied(true);
+        Reservation res8 = new Reservation(c8, ps19);
+        ps19.setOccupied(true);
+        Reservation res9 = new Reservation(c9, ps24);
+        ps24.setOccupied(true);
         Reservation res10 = new Reservation(c10, ps25); 
-        
+        ps25.setOccupied(true);
    }
 
 }

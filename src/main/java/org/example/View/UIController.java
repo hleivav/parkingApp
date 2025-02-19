@@ -5,6 +5,8 @@ import org.example.DAO.ParkingSpotDaoList;
 import org.example.DAO.ReservationDaoList;
 import org.example.Model.*;
 
+import java.util.ArrayList;
+
 public class UIController {
 
     UI ui = new UI();
@@ -23,7 +25,7 @@ public class UIController {
                 handleRegisterCustomerChoice();
                 break;
             case "2":
-
+                handleAvailableParkingSpotsChoice();
                 break;
             case "3":
                 handleParkVehicleChoice();
@@ -57,11 +59,19 @@ public class UIController {
             ParkingSpot parkingSpot = ParkingSpotDaoList.getInstance().searchFirstAvailableParkingSpotFromASort(customer.getVehicle().getVehicleSort());
             if (parkingSpot != null){
                 Reservation reservation = new Reservation(customer, parkingSpot);
+                parkingSpot.setOccupied(true);
                 System.out.println("The reservation has bee made.");
                 System.out.println(reservation.toString());
             }
         } else {
             System.out.println("We couldn't found a customer with that customer id.");
+        }
+    }
+
+    public void handleAvailableParkingSpotsChoice(){
+        ArrayList<ParkingSpot>AvailableParkingSpots = ParkingSpotDaoList.getInstance().searchAllParkingSpots();
+        for (ParkingSpot element : AvailableParkingSpots){
+            System.out.println(element.toString());
         }
     }
 

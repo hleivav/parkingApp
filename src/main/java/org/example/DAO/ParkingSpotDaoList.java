@@ -31,7 +31,13 @@ public class ParkingSpotDaoList implements ParkingSpotDao{
 
     @Override
     public ArrayList<ParkingSpot> searchAllParkingSpots() {
-        return null;
+        ArrayList<ParkingSpot> tempArray = new ArrayList<>();
+        for (ParkingSpot element : parkingSpots){
+            if (!element.isOccupied()){
+                tempArray.add(element);
+            }
+        }
+        return tempArray;
     }
 
     @Override
