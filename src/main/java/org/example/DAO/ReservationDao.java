@@ -7,7 +7,8 @@ import org.example.Model.Reservation;
 import java.util.ArrayList;
 
 public interface ReservationDao {
+    Reservation findById(String id);
     Reservation saveReservation(Reservation reservation);
-    Reservation vacateParkingSpot();
+    Reservation vacateParkingSpot(Reservation reservation);
     ArrayList<Reservation> showOngoingReservations();
 }

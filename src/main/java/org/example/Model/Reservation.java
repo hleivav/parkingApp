@@ -66,4 +66,11 @@ public class Reservation {
         return "Reservation number: " + id + "\n Customer name: " + customer.getName() + " \nVehicle type: " + customer.vehicle.vehicleSort +
                 " \nPlate number: " + customer.vehicle.plateNumber + " \nParking spot No: " + parkingSpot.getId() +  " \nStart parking at: " + startingTime;
     }
+
+    public String printTicket(){
+        return "Reservation number: " + id + "\n Customer name: " + customer.getName() + " \nVehicle type: " + customer.vehicle.vehicleSort +
+                " \nPlate number: " + customer.vehicle.plateNumber + " \nParking spot No: " + parkingSpot.getId() +  " \nStart parking at: " + startingTime +
+                "\nEnd parking at: " + endingTime;
+    }
+
 }

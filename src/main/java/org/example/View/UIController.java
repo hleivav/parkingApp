@@ -31,6 +31,7 @@ public class UIController {
                 handleParkVehicleChoice();
                 break;
             case "4":
+                handleVacateVehicleChoice();
                 break;
             case "0":
                 done = true;
@@ -56,13 +57,18 @@ public class UIController {
         String id = ui.catchUserInput("Enter the customer id: ", "You must enter a valid id. ");
         Customer customer = CustomerDaoList.getInstance().findById(id);
         if (customer != null) {
-            ParkingSpot parkingSpot = ParkingSpotDaoList.getInstance().searchFirstAvailableParkingSpotFromASort(customer.getVehicle().getVehicleSort());
-            if (parkingSpot != null){
-                System.out.println(parkingSpot);
-                Reservation reservation = new Reservation(customer, parkingSpot);
-                parkingSpot.setOccupied(true);
-                System.out.println("The reservation has bee made.");
-                System.out.println(reservation.toString());
+            if (CustomerDaoList.getInstance().findById(id) != null){
+                ParkingSpot parkingSpot = ParkingSpotDaoList.getInstance().searchFirstAvailableParkingSpotFromASort(customer.getVehicle().getVehicleSort());
+                if (parkingSpot != null){
+                    System.out.println(parkingSpot);
+                    Reservation reservation = new Reservation(customer, parkingSpot);
+                    ReservationDaoList.getInstance().saveReservation(reservation);
+                    parkingSpot.setOccupied(true);
+                    System.out.println("The reservation has bee made.");
+                    System.out.println(reservation.toString());
+                }
+            } else {
+                System.out.println("That customer has already a vehicle parked.");
             }
         } else {
             System.out.println("We couldn't found a customer with that customer id.");
@@ -74,6 +80,22 @@ public class UIController {
         for (ParkingSpot element : AvailableParkingSpots){
             System.out.println(element.toString());
         }
+    }
+
+    public void handleVacateVehicleChoice(){
+
+        String id = ui.catchUserInput("Enter the reservation id: ", "You must enter a valid id. ");
+        Reservation reservation = ReservationDaoList.getInstance().findById(id);
+        if (reservation != null) {
+            if (reservation.getActive()){
+                ReservationDaoList.getInstance().vacateParkingSpot(reservation);
+            } else {
+                System.out.println("That reservation has already expired. ");
+            }
+        } else {
+            System.out.println("We couldn't found a customer with that customer id.");
+        }
+
     }
 
 

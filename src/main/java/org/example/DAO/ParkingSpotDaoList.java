@@ -46,10 +46,9 @@ public class ParkingSpotDaoList implements ParkingSpotDao{
         for (ParkingSpot element : parkingSpots){
             if (element.getParkingSort().equals(vehicleSort) && ! element.isOccupied()){
                 return element;
-            } else {
-                System.out.println("There's none available parking spot for that type of vehicle in this moment.");
             }
         }
+        System.out.println("There's none available parking spot for that type of vehicle in this moment.");
         return null;
     }
 
