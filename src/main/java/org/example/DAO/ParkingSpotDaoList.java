@@ -57,4 +57,23 @@ public class ParkingSpotDaoList implements ParkingSpotDao{
         parkingSpots.add(parkingSpot);
         return parkingSpot;
     }
+
+    public void clearPP(){
+        parkingSpots.clear();
+    }
+
+    public boolean checkIfSpotInList(ParkingSpot spot){
+        if (parkingSpots.contains(spot)){
+            return true;
+        }
+        return false;
+    }
+
+    public int getListSize (){
+        return parkingSpots.size();
+    }
+
+    public ArrayList<ParkingSpot> allParkedSpots (){
+        return parkingSpots;
+    }
 }
