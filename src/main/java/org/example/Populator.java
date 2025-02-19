@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.DAO.CustomerDaoList;
 import org.example.DAO.ParkingSpotDaoList;
+import org.example.DAO.ReservationDaoList;
 import org.example.Model.*;
 
 public class Populator {
@@ -123,6 +124,18 @@ public class Populator {
         ps24.setOccupied(true);
         Reservation res10 = new Reservation(c10, ps25); 
         ps25.setOccupied(true);
+
+        ReservationDaoList.getInstance().saveReservation(res1);
+        ReservationDaoList.getInstance().saveReservation(res2);
+        ReservationDaoList.getInstance().saveReservation(res3);
+        ReservationDaoList.getInstance().saveReservation(res4);
+        ReservationDaoList.getInstance().saveReservation(res5);
+        ReservationDaoList.getInstance().saveReservation(res6);
+        ReservationDaoList.getInstance().saveReservation(res7);
+        ReservationDaoList.getInstance().saveReservation(res8);
+        ReservationDaoList.getInstance().saveReservation(res9);
+        ReservationDaoList.getInstance().saveReservation(res10);
+
    }
 
 }

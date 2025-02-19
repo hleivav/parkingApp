@@ -33,6 +33,10 @@ public class ParkingSpot {
         this.occupied = occupied;
     }
 
+    public String getId() {
+        return id;
+    }
+
     @Override
     public String toString(){
         return "Parking spot No: " + id + " Occupied: " + occupied + " Parking spot for: " + parkingSort;

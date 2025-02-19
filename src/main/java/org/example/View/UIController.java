@@ -58,6 +58,7 @@ public class UIController {
         if (customer != null) {
             ParkingSpot parkingSpot = ParkingSpotDaoList.getInstance().searchFirstAvailableParkingSpotFromASort(customer.getVehicle().getVehicleSort());
             if (parkingSpot != null){
+                System.out.println(parkingSpot);
                 Reservation reservation = new Reservation(customer, parkingSpot);
                 parkingSpot.setOccupied(true);
                 System.out.println("The reservation has bee made.");

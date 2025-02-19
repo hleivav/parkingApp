@@ -63,7 +63,7 @@ public class Reservation {
 
     @Override
     public String toString(){
-        return "Reservation number: " + id + "\n Customer name: " + customer.getName() + " Vehicle type: " + customer.vehicle.vehicleSort +
-                " Plate number: " + customer.vehicle.plateNumber + " Start parking at: " + startingTime;
+        return "Reservation number: " + id + "\n Customer name: " + customer.getName() + " \nVehicle type: " + customer.vehicle.vehicleSort +
+                " \nPlate number: " + customer.vehicle.plateNumber + " \nParking spot No: " + parkingSpot.getId() +  " \nStart parking at: " + startingTime;
     }
 }
